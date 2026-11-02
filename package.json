@@ -1,5 +1,5 @@
 {
-  "name": "osu-api",
+  "name": "@yusupkakuu/osu-api",
   "version": "1.0.1",
   "description": "osu! API v1 and v2 client for JavaScript and TypeScript",
   "main": "./dist/index.js",

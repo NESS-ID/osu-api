@@ -81,7 +81,7 @@ test('API v1 fails clearly when the API key is missing', async () => {
 });
 
 test('ESM package entry point exposes default and named client exports', async () => {
-  const esm = await import('osu-api');
+  const esm = await import('@yusupkakuu/osu-api');
   assert.strictEqual(esm.default, esm.OsuApi);
   assert.strictEqual(typeof new esm.default(), 'object');
 });

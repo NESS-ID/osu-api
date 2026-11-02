@@ -5,7 +5,7 @@ Client JavaScript dan TypeScript untuk osu! API v1 dan v2. Setiap versi API meng
 ## Instalasi
 
 ```bash
-npm install osu-api
+npm install @yusupkakuu/osu-api
 ```
 
 Membutuhkan Node.js versi 18 atau lebih baru. Deklarasi tipe TypeScript sudah disertakan.
@@ -13,7 +13,7 @@ Membutuhkan Node.js versi 18 atau lebih baru. Deklarasi tipe TypeScript sudah di
 ## JavaScript: CommonJS
 
 ```js
-const OsuApi = require('osu-api');
+const OsuApi = require('@yusupkakuu/osu-api');
 
 const api = new OsuApi({
   apiKey: process.env.OSU_API_KEY, // v1
@@ -35,7 +35,7 @@ main().catch(console.error);
 ## JavaScript: ESM
 
 ```js
-import OsuApi, { OsuApi as NamedOsuApi } from 'osu-api';
+import OsuApi, { OsuApi as NamedOsuApi } from '@yusupkakuu/osu-api';
 
 const api = new OsuApi({
   clientId: 12345,
@@ -47,7 +47,7 @@ const user = await api.v2.getUser('peppy', 'osu');
 CommonJS dan ESM sama-sama mendukung `new OsuApi(...)`. TypeScript dapat menggunakan default export atau named export:
 
 ```ts
-import OsuApi, { type OsuApiOptions } from 'osu-api';
+import OsuApi, { type OsuApiOptions } from '@yusupkakuu/osu-api';
 
 const options: OsuApiOptions = {
   clientId: 12345,

@@ -5,7 +5,7 @@ A JavaScript and TypeScript client for the osu! API v1 and v2. Each API version 
 ## Installation
 
 ```bash
-npm install osu-api
+npm install @yusupkakuu/osu-api
 ```
 
 Requires Node.js 18 or later. TypeScript declarations are included.
@@ -13,7 +13,7 @@ Requires Node.js 18 or later. TypeScript declarations are included.
 ## JavaScript: CommonJS
 
 ```js
-const OsuApi = require('osu-api');
+const OsuApi = require('@yusupkakuu/osu-api');
 
 const api = new OsuApi({
   apiKey: process.env.OSU_API_KEY, // v1
@@ -35,7 +35,7 @@ main().catch(console.error);
 ## JavaScript: ESM
 
 ```js
-import OsuApi, { OsuApi as NamedOsuApi } from 'osu-api';
+import OsuApi, { OsuApi as NamedOsuApi } from '@yusupkakuu/osu-api';
 
 const api = new OsuApi({
   clientId: 12345,
@@ -47,7 +47,7 @@ const user = await api.v2.getUser('peppy', 'osu');
 CommonJS and ESM both support `new OsuApi(...)`. TypeScript can use the default or named export:
 
 ```ts
-import OsuApi, { type OsuApiOptions } from 'osu-api';
+import OsuApi, { type OsuApiOptions } from '@yusupkakuu/osu-api';
 
 const options: OsuApiOptions = {
   clientId: 12345,
