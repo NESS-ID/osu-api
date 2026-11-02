@@ -1,14 +1,14 @@
 # osu-api
 
-Client osu! API v1 dan v2 untuk JavaScript dan TypeScript. API v1 dan v2 memakai autentikasi berbeda; pilih konfigurasi sesuai versi yang digunakan. Client tidak memiliki dependency runtime dan menggunakan `fetch`.
+A JavaScript and TypeScript client for the osu! API v1 and v2. Each API version uses different authentication, so configure the credentials for the version you plan to use. The client has no runtime dependencies and uses `fetch`.
 
-## Instalasi
+## Installation
 
 ```bash
 npm install osu-api
 ```
 
-Node.js 18 atau lebih baru diperlukan. TypeScript didukung melalui deklarasi tipe bawaan.
+Requires Node.js 18 or later. TypeScript declarations are included.
 
 ## JavaScript: CommonJS
 
@@ -16,9 +16,9 @@ Node.js 18 atau lebih baru diperlukan. TypeScript didukung melalui deklarasi tip
 const OsuApi = require('osu-api');
 
 const api = new OsuApi({
-  apiKey: process.env.OSU_API_KEY, // untuk v1
-  clientId: process.env.OSU_CLIENT_ID, // untuk v2
-  clientSecret: process.env.OSU_CLIENT_SECRET // untuk v2
+  apiKey: process.env.OSU_API_KEY, // v1
+  clientId: process.env.OSU_CLIENT_ID, // v2
+  clientSecret: process.env.OSU_CLIENT_SECRET // v2
 });
 
 async function main() {
@@ -37,11 +37,14 @@ main().catch(console.error);
 ```js
 import OsuApi, { OsuApi as NamedOsuApi } from 'osu-api';
 
-const api = new OsuApi({ clientId: 12345, clientSecret: process.env.OSU_CLIENT_SECRET });
+const api = new OsuApi({
+  clientId: 12345,
+  clientSecret: process.env.OSU_CLIENT_SECRET
+});
 const user = await api.v2.getUser('peppy', 'osu');
 ```
 
-CommonJS dan ESM sama-sama bisa menggunakan `new OsuApi(...)`. TypeScript bisa mengimpor default atau named export:
+CommonJS and ESM both support `new OsuApi(...)`. TypeScript can use the default or named export:
 
 ```ts
 import OsuApi, { type OsuApiOptions } from 'osu-api';
@@ -54,18 +57,18 @@ const api = new OsuApi(options);
 const scores = await api.v2.getUserScores(2, 'best', { limit: 5 });
 ```
 
-## Memilih API
+## Choosing an API
 
-- **API v1**: berikan `apiKey`. Akses melalui `api.v1`; misalnya `getBeatmaps`, `getUser`, `getScores`, `getUserBest`, `getUserRecent`, dan `getReplay`. Untuk endpoint v1 lain, gunakan `api.v1.request('get_beatmaps', { query: { ... } })`.
-- **API v2**: berikan `clientId` dan `clientSecret` untuk OAuth client credentials, atau token yang masih berlaku melalui `accessToken` dan `expiresAt`. Akses melalui `api.v2`; misalnya `getUser`, `getUserScores`, `getBeatmap`, `searchBeatmaps`, dan `getRanking`. Endpoint v2 lain tersedia melalui `api.v2.request('/me')`.
+- **API v1**: provide an `apiKey` and use `api.v1`. Helpers include `getBeatmaps`, `getUser`, `getScores`, `getUserBest`, `getUserRecent`, and `getReplay`. For other v1 endpoints, use `api.v1.request('get_beatmaps', { query: { ... } })`.
+- **API v2**: provide `clientId` and `clientSecret` for OAuth client credentials, or a valid token with `accessToken` and `expiresAt`. Use `api.v2` for helpers such as `getUser`, `getUserScores`, `getBeatmap`, `searchBeatmaps`, and `getRanking`. Other v2 endpoints are available through `api.v2.request('/me')`.
 
-Helper lama seperti `api.getUser(...)` dan `api.request(...)` tetap tersedia dan tetap mengarah ke API v2.
+Existing helpers such as `api.getUser(...)` and `api.request(...)` are still available and continue to use API v2.
 
-`apiKey` adalah kredensial rahasia. Simpan di environment variable dan jangan masukkan ke kode publik/browser. API v1 memiliki cakupan endpoint dan parameter berbeda dari v2.
+An `apiKey` is a secret credential. Store it in an environment variable; do not expose it in public code or browser applications. API v1 has different endpoint coverage and parameters from API v2.
 
-## Konfigurasi lanjutan
+## Advanced configuration
 
-`baseUrl`, `tokenUrl`, dan `v1BaseUrl` dapat diubah untuk server kompatibel atau pengujian. `fetch` juga dapat diinjeksi, misalnya untuk runtime yang menyediakan implementasi fetch sendiri.
+Set `baseUrl`, `tokenUrl`, and `v1BaseUrl` to use compatible servers or for testing. You can also inject a `fetch` implementation, for example when your runtime provides its own.
 
 ## License
 
