@@ -41,7 +41,7 @@
     "osu-api-v1",
     "osu-api-v2"
   ],
-  "author": "NESS-ID",
+  "author": "ItsukaShidou",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^26.6.6",
