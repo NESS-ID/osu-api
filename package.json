@@ -1,0 +1,21 @@
+{
+  "name": "osu-api",
+  "version": "1.0.1",
+  "description": "Lightweight osu! API v2 client for Node.js",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NESS-ID/osu-api.git"
+  },
+  "keywords": [
+    "osu",
+    "osu-api",
+    "osu-api-v2"
+  ],
+  "author": "NESS-ID",
+  "license": "MIT"
+}
