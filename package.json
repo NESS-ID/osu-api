@@ -1,11 +1,35 @@
 {
   "name": "osu-api",
   "version": "1.0.1",
-  "description": "Lightweight osu! API v2 client for Node.js",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "description": "osu! API v1 and v2 client for JavaScript and TypeScript",
+  "main": "./dist/index.js",
+  "module": "./index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": "./index.mjs"
+    }
+  },
+  "files": [
+    "dist",
+    "index.d.mts",
+    "index.mjs"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "test": "node --test"
+    "build": "tsc",
+    "test": "npm run build && node --test",
+    "prepack": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -14,8 +38,13 @@
   "keywords": [
     "osu",
     "osu-api",
+    "osu-api-v1",
     "osu-api-v2"
   ],
   "author": "NESS-ID",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
 }
